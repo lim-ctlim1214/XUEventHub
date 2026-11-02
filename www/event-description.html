@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Event Description | XU EventHub</title>
+
+    <!-- Shared and page-specific styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/event-description.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="event-description-app">
+
+        <!-- Top Navigation -->
+        <header class="event-description-header">
+
+            <button class="back-button" type="button" aria-label="Go back">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="event-search">
+                <p>Search for Events</p>
+            </div>
+
+        </header>
+
+
+        <!-- Main Event Content -->
+        <main class="event-description-content">
+
+            <!-- Primary Event Banner -->
+            <section class="event-banner">
+
+                <div class="event-banner-overlay">
+                    <h1>The Xavier Cup</h1>
+                    <p>October 17 - October 24</p>
+                </div>
+
+            </section>
+
+
+            <!-- About Event -->
+            <section class="event-information-card">
+
+                <h2>About Event</h2>
+
+                <p class="event-about-description">
+                    This is a description of the event. lorem ipsum dolor sit amet
+                    consectetur adipiscing elit sit vero lorem fuga expedita ut quod
+                    esse velit possimus eum tempor est et qui distinctio cumque cumque
+                    repellendus cillum consequat accusamus ullamco...
+                </p>
+
+                <div class="bookmark-count">
+				   <button
+                      class="primary-event-bookmark-button"
+                      type="button"
+                      data-event-id="xavier-cup"
+                      aria-label="Add The Xavier Cup to bookmarks"
+                      aria-pressed="false"
+                   >
+                      <i class="fa-regular fa-bookmark"></i>
+                   </button>
+
+                   <span>135</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- Quick Details -->
+            <section class="event-information-card quick-details">
+
+                <h2>Quick Details</h2>
+
+                <p><strong>Attendance:</strong> Optional</p>
+
+                <p><strong>Location:</strong> Xavier University - Ateneo De Cagayan</p>
+
+                <p><strong>Date:</strong> October 17 - October 24, 2026</p>
+
+                <p><strong>Time:</strong> All Day</p>
+
+                <p><strong>Incentives:</strong> Plus points depending on the teacher</p>
+
+                <p><strong>Organizers:</strong> Xavier University - CSG</p>
+
+            </section>
+
+
+            <!-- Secondary Events -->
+            <section class="secondary-events-section" id="secondary-events">
+
+                <h2>Secondary Events</h2>
+
+                <div class="secondary-event-list">
+
+                    <!-- Football -->
+                    <article class="secondary-event-card" data-event-id="football-eng-sbm">
+
+                        <div class="secondary-event-details">
+                            <h3>Football - ENG v. SBM</h3>
+                            <p>The Xavier Cup - October 19 @ 8:00am</p>
+                        </div>
+
+                        <button class="event-bookmark-button" type="button" data-event-id="football-eng-sbm" aria-label="Bookmark Football event">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </button>
+
+                    </article>
+
+
+                    <!-- Volleyball -->
+                    <article class="secondary-event-card" data-event-id="volleyball-ccs-nsg">
+
+                        <div class="secondary-event-details">
+                            <h3>Volleyball - CCS v. NSG</h3>
+                            <p>The Xavier Cup - October 19 @ 9:00am</p>
+                        </div>
+
+                        <button class="event-bookmark-button" type="button" data-event-id="volleyball-ccs-nsg" aria-label="Bookmark Volleyball event">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </button>
+
+                    </article>
+
+
+                    <!-- Pickleball -->
+                    <article class="secondary-event-card" data-event-id="pickleball-ccs-law">
+
+                        <div class="secondary-event-details">
+                            <h3>Pickleball - CCS v. LAW</h3>
+                            <p>The Xavier Cup - October 19 @ 9:00am</p>
+                        </div>
+
+                        <button class="event-bookmark-button" type="button" data-event-id="pickleball-ccs-law" aria-label="Bookmark Pickleball event">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </button>
+
+                    </article>
+
+
+                    <!-- Basketball -->
+                    <article class="secondary-event-card" data-event-id="basketball-ccs-sbm">
+
+                        <div class="secondary-event-details">
+                            <h3>Basketball - CCS v. SBM</h3>
+                            <p>The Xavier Cup - October 21 @ 9:00am</p>
+                        </div>
+
+                        <button class="event-bookmark-button" type="button" data-event-id="basketball-ccs-sbm" aria-label="Bookmark Basketball event">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </button>
+
+                    </article>
+
+                </div>
+
+
+                <!-- Show More -->
+                <button class="show-more-button" type="button">
+                    Show more <i class="fa-solid fa-chevron-down"></i>
+                </button>
+
+            </section>
+
+
+            <!-- Back to Top -->
+            <button class="back-to-top-button" type="button">
+                Back to Top <i class="fa-solid fa-chevron-up"></i>
+            </button>
+
+        </main>
+
+    </div>
+
+<script src="js/event-description.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+
+/*
+   XU EVENTHUB - BOOKMARKED EVENTS PAGE
+*/
+
+.bookmarked-events-app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f5f5f5;
+    font-family: 'Inter', sans-serif;
+    color: #222;
+}
+
+
+/*
+   1. TOP NAVIGATION
+*/
+
+.bookmarked-events-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: #f5f5f5;
+}
+
+.back-button {
+    border: none;
+    background: transparent;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: #222;
+}
+
+.event-search {
+    flex: 1;
+    background: #cacaca;
+    border: 1px solid #bdbdbd;
+    border-radius: 7px;
+    padding: 0.6rem 0.8rem;
+}
+
+.event-search p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+
+/*
+   2. MAIN CONTENT
+*/
+
+.bookmarked-events-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 95%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
+.bookmarked-events-content > h1 {
+    font-size: 1.2rem;
+    margin: 0.2rem 0;
+}
+
+
+/*
+   3. BOOKMARKED SECTIONS
+*/
+
+.bookmarked-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.bookmarked-section h2 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+
+/*
+   4. PRIMARY EVENT LIST
+*/
+
+.bookmarked-primary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.bookmarked-primary-card {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 110px;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #bdbdbd;
+    border-radius: 12px;
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("../img/banner-txc.png") center / cover no-repeat;
+    color: white;
+}
+
+.bookmarked-primary-details {
+    padding: 0.8rem;
+}
+
+.bookmarked-primary-details h3 {
+    margin: 0 0 0.2rem;
+    font-size: 0.95rem;
+}
+
+.bookmarked-primary-details p {
+    margin: 0;
+    font-size: 0.75rem;
+}
+
+
+/*
+   5. SECONDARY EVENT LIST
+*/
+
+.bookmarked-secondary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.bookmarked-secondary-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem;
+    background: #d5d5d5;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.bookmarked-secondary-details h3 {
+    margin: 0 0 0.2rem;
+    font-size: 0.85rem;
+}
+
+.bookmarked-secondary-details p {
+    margin: 0;
+    font-size: 0.7rem;
+    color: #444;
+}
+
+
+/*
+   6. SHOW ALL BUTTONS
+*/
+
+.show-all-button {
+    align-self: center;
+    border: none;
+    background: transparent;
+    color: #555;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    padding: 0.4rem;
+    cursor: pointer;
+}
+
+.show-all-button i {
+    margin-left: 0.25rem;
+    font-size: 0.7rem;
+}
+
+
+/*
+   7. EMPTY BOOKMARK MESSAGE
+*/
+
+.empty-bookmarks-message {
+    padding: 1rem;
+    text-align: center;
+    background: #d5d5d5;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+
+/*
+   8. RESPONSIVE DESIGN
+*/
+
+@media (max-width: 480px) {
+
+    .bookmarked-events-content {
+        width: 92%;
+    }
+
+    .bookmarked-primary-card {
+        min-height: 110px;
+    }
+
+    .bookmarked-secondary-card {
+        padding: 0.7rem;
+    }
+
+}
+
+
+/*
+   9. HIDDEN EVENT CARDS
+   Keeps collapsed cards hidden even when their
+   normal card styles use display: flex.
+*/
+
+.bookmarked-primary-card[hidden],
+.bookmarked-secondary-card[hidden] {
+    display: none !important;
+}

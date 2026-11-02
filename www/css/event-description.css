@@ -1,0 +1,241 @@
+
+/*
+   XU EVENTHUB - EVENT DESCRIPTION PAGE
+*/
+
+/* Main Page */
+
+.event-description-app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    font-family: Inter, system-ui, sans-serif;
+    color: #222;
+}
+
+
+/* Top Navigation */
+
+.event-description-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f5f5f5;
+}
+
+.back-button {
+    border: none;
+    background: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: #222;
+}
+
+.event-search {
+    flex: 1;
+    background-color: #cacaca;
+    border: 1px solid #bdbdbd;
+    border-radius: 7px;
+    padding: 0.65rem;
+}
+
+.event-search p {
+    margin: 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+
+/* Main Content */
+
+.event-description-content {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 0.6rem;
+    width: 95%;
+    max-width: 650px;
+    padding-bottom: 2rem;
+    font-size: 12px;
+}
+
+
+/* Primary Event Banner */
+
+.event-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 110px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    color: white;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        url("../img/banner-txc.png") center / cover no-repeat;
+}
+
+.event-banner-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.event-banner-overlay h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.event-banner-overlay p {
+    margin: 0.2rem 0 0;
+    font-size: 0.85rem;
+}
+
+
+/* Information Cards */
+
+.event-information-card {
+    background-color: #d5d5d5;
+    border: 1px solid #bdbdbd;
+    border-radius: 12px;
+    padding: 0.8rem;
+}
+
+.event-information-card h2 {
+    margin: 0 0 0.6rem;
+    font-size: 1rem;
+}
+
+.event-about-description {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.35;
+}
+
+
+/* Bookmark Count */
+
+.bookmark-count {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+}
+
+
+/* Quick Details */
+
+.quick-details p {
+    margin: 0.35rem 0;
+    font-size: 0.8rem;
+    line-height: 1.3;
+}
+
+.quick-details strong {
+    font-weight: 600;
+}
+
+
+/* Secondary Events */
+
+.secondary-events-section h2 {
+    margin: 0.3rem 0 0.6rem;
+    font-size: 1rem;
+}
+
+.secondary-event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.secondary-event-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+    background-color: #d5d5d5;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+    padding: 0.65rem;
+}
+
+.secondary-event-details h3 {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.secondary-event-details p {
+    margin: 0.2rem 0 0;
+    font-size: 0.7rem;
+    font-weight: 300;
+}
+
+.event-bookmark-button {
+    border: none;
+    background: transparent;
+    color: #222;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+
+/* Show More */
+
+.show-more-button {
+    display: block;
+    margin: 0.8rem auto;
+    border: none;
+    background: transparent;
+    color: #888;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+
+/* Back to Top */
+
+.back-to-top-button {
+    align-self: center;
+    border: none;
+    background: transparent;
+    color: #777;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+
+/* Responsive Layout */
+
+@media (max-width: 480px) {
+
+    .event-description-content {
+        width: 95%;
+    }
+
+    .event-banner {
+        min-height: 160px;
+    }
+
+    .event-banner-overlay h1 {
+        font-size: 1.5rem;
+    }
+
+    .event-information-card {
+        padding: 0.85rem;
+    }
+
+    .secondary-event-card {
+        padding: 0.7rem;
+    }
+
+}
