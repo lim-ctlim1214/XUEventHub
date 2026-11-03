@@ -86,7 +86,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid #b9b9b9;
     background: #d5d5d5;
     border-radius: 10px;
     padding: 0.8rem;
@@ -199,6 +199,8 @@ body {
     align-self: center;
     background-color: white;
     padding: 0.4rem 1rem;
+    text-decoration: none;
+    color: black;
     p {
         margin: 0;
     }
@@ -207,4 +209,10 @@ body {
 .disclaimer {
     align-self: center;
     color: #b5b5b5;
+}
+
+.admin-view-text {
+    align-self: center;
+    color: red;
+    justify-self: end;
 }
