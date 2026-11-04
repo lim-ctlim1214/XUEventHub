@@ -29,6 +29,7 @@ body {
     align-self: center;
     gap: 0.5rem;
     width: 95%;
+
 }
 
 .happening-now {
@@ -85,7 +86,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid #b9b9b9;
     background: #d5d5d5;
     border-radius: 10px;
     padding: 0.8rem;
@@ -137,7 +138,6 @@ body {
         color: #909090
     }
     border: 1px solid #bdbdbd;
-
 }
 
 .event-information-card {
@@ -178,3 +178,140 @@ body {
     cursor: pointer;
 }
 
+.content.full {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 100vh;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.button-regular {
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    align-self: center;
+    background-color: white;
+    padding: 0.4rem 1rem;
+    text-decoration: none;
+    color: black;
+    p {
+        margin: 0;
+    }
+}
+
+.disclaimer {
+    align-self: center;
+    color: #b5b5b5;
+}
+
+.admin-view-text {
+    align-self: center;
+    color: red;
+    justify-self: end;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-field-rg {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    h3 {
+      margin: 0;
+    }
+}
+
+.reg-input {
+    background-color: #cacaca;
+    flex: 1;
+    border-radius: 7px;
+    padding: 0.5rem;
+    border: 1px solid #bdbdbd;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+
+.input-textarea {
+    background-color: #cacaca;
+    border-radius: 7px;
+    padding: 0.5rem;
+    border: 1px solid #bdbdbd;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    resize: none;
+    min-height: 14rem;
+    outline: none;
+}
+
+.selectable-date-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+
+.date-input {
+    background-color: #cacaca;
+    border-radius: 7px;
+    padding: 0.25rem;
+    border: 1px solid #bdbdbd;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+
+}
+
+.date-input.time{
+    padding: 0.25rem 1rem;
+}
+
+.img-select {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    .img-file {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #cacaca;
+        border: none;
+        border-radius: 7px;
+        padding: 0.5rem;
+        p {
+            margin: 0;
+        }
+    }
+}
+
+.save-container {
+    margin: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    justify-content: center;
+
+    .button-regular {
+        width: 40%;
+        text-align: center;
+    }
+}
+
+.tiny-disclaimer {
+    font-size: 0.5rem;
+    color: #939393;
+    margin: 0;
+}

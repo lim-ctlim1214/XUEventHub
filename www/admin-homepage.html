@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bookmarked Events</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/84a16f645c.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="app">
+        <div class="heading">
+            <a class="transparent-icon-button" href="admin-login.html">
+                <i class="fa-solid fa-chevron-left fa-xl"></i>
+            </a>
+            <div class="search">
+                <p class="placeholder">Search for Created Events</p>
+            </div>
+            <a class="transparent-icon-button" href="event-creation.html" aria-label="Create Event">
+                <i class="fa-solid fa-paintbrush fa-xl"></i>
+            </a>
+        </div>
+        <div class="content">
+            <div class="happening-now">
+                <h3>Manage Ongoing Events</h3>
+                <a class="transparent-icon-button" href="event-management.html">
+                    <div class="primary-event">
+                        <h1>The Xavier Cup</h1>
+                        <p>October 17 - October 24</p>
+                    </div>
+                </a>
+            </div>
+            <div class="event-list-container">
+                <h3>Manage Upcoming Events</h3>
+                <div class="event-simple-list">
+                    <div class="simple-event-display">
+                        <div class="event-details">
+                            <h3>Football - ENG v. SBM</h3>
+                            <p>The Xavier Cup - October 19 @ 8:00am</p>
+                        </div>
+                    </div>
+                    <div class="simple-event-display">
+                        <div class="event-details">
+                            <h3>Volleyball - ENG v. SBM</h3>
+                            <p>The Xavier Cup - October 19 @ 8:00am</p>
+                        </div>
+                    </div>
+                    <div class="simple-event-display">
+                        <div class="event-details">
+                            <h3>Pickleball - CCS v. LAW</h3>
+                            <p>The Xavier Cup - October 19 @ 8:00am</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="show-more-button" type="button">
+                Show more <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>
+        <footer class="admin-view-text">
+            <p>Admin View</p>
+        </footer>
+    </div>
+</body>
+</html>
