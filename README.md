@@ -1,11 +1,11 @@
-## XU EventHub - Last Updated: 11/4/2026 
+# XU EventHub - Last Updated: 11/4/2026 
 
-### Milestone 2 Progress Report:
+## Milestone 2 Progress Report:
 - Implemented all different UI elements!
 - No in-depth logic just yet. However, these will be implemented in Milestones 3 and 4.
 - No problems were encountered during the UI phase. Though, it is expected Core Functionality will have issues relating to the said UI.
 
-### Screenshots:
+## Screenshots:
 #### Homepage
 <img width="337" height="750" alt="image" src="https://github.com/user-attachments/assets/5b6985e0-06e3-4ebd-861f-5483f3c7aeba" />
 
@@ -36,7 +36,7 @@
 
 <img width="337" height="750" alt="image" src="https://github.com/user-attachments/assets/ae7049d8-e5fb-40ce-97ac-9afcf7b2e041" />
 
-### How To Run:
+## How To Run:
 There are 2 necessary commands needed to run this application:
 
 cordova build android: Builds the Application for Android Devices
