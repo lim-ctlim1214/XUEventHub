@@ -10,4 +10,6 @@
     <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <access origin="https://omrqbbiehkgqqgxqbtor.supabase.co"/>
+    <allow-navigation href="https://omrqbbiehkgqqgxqbtor.supabase.co"/>
 </widget>
