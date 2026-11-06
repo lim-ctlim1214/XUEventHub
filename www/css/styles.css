@@ -100,6 +100,10 @@ body {
     }
 }
 
+.hidden {
+    display: none;
+}
+
 .primary-event {
     display: flex;
     flex-direction: column;
