@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Creation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval';
+           connect-src 'self' https://omrqbbiehkgqqgxqbtor.supabase.co wss://omrqbbiehkgqqgxqbtor.supabase.co https://kit.fontawesome.com https://ka-f.fontawesome.com;
+           style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com;
+           font-src 'self' data: https://fonts.gstatic.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com;
+           script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://kit.fontawesome.com;
+           img-src 'self' data: https:;">
+</head>
+<body>
+    <div class="app">
+        <header class="heading">
+            <a class="transparent-icon-button" href="admin-homepage.html">
+                <i class="fa-solid fa-chevron-left fa-xl"></i>
+            </a>
+            <p>Creating an Event</p>
+        </header>
+        <div class="content">
+            <div class="form-container">
+                <div class="form-field-rg">
+                    <h3>Event Name</h3>
+                    <input class="reg-input" placeholder="Event Name" type="text"/>
+                </div>
+                <div class="form-field-rg">
+                    <h3>Describe Your Event</h3>
+                    <textarea class="input-textarea" ></textarea>
+                </div>
+                <div class="field-container">
+                    <h3>Dates Available</h3>
+                    <div class="selectable-date-form">
+                        <input class="date-input" type="date" id="start-date"/>
+                        <input class="date-input" type="date" id="end-date"/>
+                    </div>
+                </div>
+                <div class="field-container">
+                    <h3>Time Available</h3>
+                    <div class="selectable-date-form">
+                        <input class="date-input time" type="time" id="start-time"/>
+                        <input class="date-input time"  type="time" id="end-time"/>
+                    </div>
+                </div>
+                <div class="form-field-rg">
+                    <h3>Category</h3>
+                    <select class="reg-input" id="event-type">
+                        <option value="">Select an Event</option>
+                        <option value="sports">Sports</option>
+                        <option value="fun">Fun</option>
+                    </select>
+                </div>
+                <div class="form-field-rg">
+                    <h3>Location</h3>
+                    <input class="reg-input" placeholder="Location" type="text"/>
+                </div>
+                <div class="form-field-rg">
+                    <h3>Attendance</h3>
+                    <input class="reg-input" placeholder="Attendance" type="text"/>
+                </div>
+                <div class="form-field-rg">
+                    <h3>Incentives</h3>
+                    <input class="reg-input" placeholder="Incentives" type="text"/>
+                </div>
+                <div class="form-field-rg">
+                    <h3>Organizers</h3>
+                    <input class="reg-input" placeholder="Organizers" type="text"/>
+                </div>
+                <div class="form-field-rg">
+                    <h3>Banner Image</h3>
+                    <div class="img-select">
+                        <p>Image file.jpg</p>
+                        <div class="img-file">
+                            <p>Select</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field-rg">
+                    <h3>Primary Event</h3>
+                    <select class="reg-input" id="primary">
+                        <option value="">None</option>
+                        <option value="txc">The Xavier Cup</option>
+                        <option value="xufd">XU Festival Days</option>
+                        <option value="semfi">Semifinal Exams</option>
+                    </select>
+                    <p class="tiny-disclaimer">If this event is a part of another event: select that event, otherwise leave it as none.</p>
+                </div>
+            </div>
+            <div class="save-container">
+                <div class="button-regular">
+                    <p>Save</p>
+                </div>
+                <a class="button-regular" href="admin-homepage.html">
+                    <p>Cancel</p>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
