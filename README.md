@@ -1,9 +1,26 @@
-# XU EventHub - Last Updated: 11/4/2026 
+# XU EventHub - Last Updated: 11/7/2026 
 
-## Milestone 2 Progress Report:
-- Implemented all different UI elements!
-- No in-depth logic just yet. However, these will be implemented in Milestones 3 and 4.
-- No problems were encountered during the UI phase. Though, it is expected Core Functionality will have issues relating to the said UI.
+## Implemented Features:
+
+Added Database Functionality via Supabase.
+- Database functionality was added via CDN. It accesses the main database online.
+
+Added Happening Now, Bookmarking and Upcoming Events Display via Homepage.
+- The Homepage features 3 sections: Happening Now, Bookmarked Events and Upcoming Events.
+- The Homepage allows you to bookmark events which will immediately appear in the homepage.
+- Bookmarks are persistent and will remain in LocalStorage.
+- The Homepage also features the "Happening Now" display, which displays available events happening at that moment.
+- As of now, there is a "Happening Event" that is happening all the time.
+
+Added Event Description Functionality.
+- Clicking on events brings you to the event description page.
+- This allows for users to see the details of each event.
+
+Added Bookmark Page Functionality.
+- With bookmarks added, the bookmarks page is added as well. Users click on the bookmark icon on the top right of the homepage, and will arrive at the bookmark homepage.
+
+## Progress Report:
+We completed most of the features for regular end-users. We are beginning to work on Admin Event Creation, which will be implemented in Milestone 4. We encountered problems regarding time constraints. The 3 days we had paired with class hindered our ability to fully push functional requirements such as Admin Event Creation. We also encountered problems with unnecessary elements such as bookmark amount, which has been removed and will not be added in the full release. Overall, it was a productive Milestone, but we fell short of our target.
 
 ## Screenshots:
 #### Homepage

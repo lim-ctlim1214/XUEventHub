@@ -4,16 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Bookmarked Events</title>
+    <title>Homepage</title>
     <link rel="stylesheet" href="css/styles.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-
-    <script src="https://kit.fontawesome.com/84a16f645c.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval';
+           connect-src 'self' https://omrqbbiehkgqqgxqbtor.supabase.co wss://omrqbbiehkgqqgxqbtor.supabase.co https://kit.fontawesome.com https://ka-f.fontawesome.com;
+           style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com;
+           font-src 'self' data: https://fonts.gstatic.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com;
+           script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://kit.fontawesome.com;
+           img-src 'self' data: https:;">
 </head>
 
 <body>
@@ -34,53 +38,18 @@
             <section class="primary-event-list">
                 <h3>Bookmarked Events</h3>
                 <div class="bookmarked-primary-list" id="bookmarked-primary-list">
-                    <a class="transparent-icon-button" href="event-description.html">
-                        <div class="primary-event searchworthy">
-                            <h1>The Xavier Cup</h1>
-                            <p>October 17 - October 24</p>
-                        </div>
-                    </a>
-                    <div style="background-image: none" class="primary-event searchworthy">
-                        <h1>Semi-Final Exam</h1>
-                        <p>November 9 - November 14</p>
-                    </div>
+                    <p class="disclaimer-text" id="bookmark-disclaimer">No events have been bookmarked.</p>
                 </div>
             </section>
             <section class="event-list-container">
                 <div class="event-simple-list" id="bookmarked-secondary-list">
                     <h3>Secondary Events</h3>
-                    <article class="simple-event-display" data-event-id="football-eng-sbm">
-                        <div class="event-details">
-                            <h3>Football - ENG v. SBM</h3>
-                            <p>The Xavier Cup - October 19 @ 8:00am</p>
-                        </div>
-                        <i class="fa-regular fa-bookmark"></i>
-                    </article>
-
-                    <article class="simple-event-display" data-event-id="volleyball-ccs-nsg">
-                        <div class="event-details">
-                            <h3>Volleyball - CCS v. NSG</h3>
-                            <p>The Xavier Cup - October 19 @ 9:00am</p>
-                        </div>
-                        <i class="fa-regular fa-bookmark"></i>
-                    </article>
-
-                    <article class="simple-event-display" data-event-id="pickleball-ccs-law">
-                        <div class="event-details">
-                            <h3>Pickleball - CCS v. LAW</h3>
-                            <p>The Xavier Cup - October 19 @ 9:00am</p>
-                        </div>
-                        <i class="fa-regular fa-bookmark"></i>
-                    </article>
 
                     <article class="simple-event-display" data-event-id="basketball-ccs-sbm">
                         <div class="event-details">
-                            <h3>Basketball - CCS v. SBM</h3>
-                            <p>The Xavier Cup - October 21 @ 9:00am</p>
+                            <h3>Milestone 4</h3>
+                            <p>To be implemented</p>
                         </div>
-
-                        <i class="fa-regular fa-bookmark"></i>
-
 
                     </article>
 
@@ -89,4 +58,6 @@
         </main>
     </div>
 </body>
+<script src="js/database.js"></script>
+<script src="js/bookmarked-events.js"></script>
 </html>
