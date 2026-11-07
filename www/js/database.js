@@ -21,6 +21,33 @@ function formatRange(eventDetails) {
     return start === end ? start : `${start} - ${end}`;
 }
 
+async function searchEvents(query) {
+    const {data, error} = await db
+        .from('Events')
+        .select('*').ilike('name', `%${query}%`)
+        .order('start_date', {ascending: true})
+
+    if (error) {
+        console.error(error);
+        return [];
+    }
+
+    return data;
+}
+
+async function grabAllEvents() {
+    const { data, error } = await db
+        .from('Events')
+        .select('*')
+        .order('start_date', { ascending: true });
+
+    if (error) {
+        console.error(error);
+        return [];
+    }
+    return data;
+}
+
 async function grabEvent(eventName) {
     const { data, error } = await db
         .from('Events')
