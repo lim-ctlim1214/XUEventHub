@@ -1,9 +1,6 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
-const date_options = {
-    "month": "long",
-    "day": "numeric",
-};
+
 
 let happeningNow = 0;
 
@@ -33,11 +30,7 @@ function addBookmarkedEvent(eventDetails){
     }
 }
 
-function formatRange(eventDetails) {
-    const start = new Date(eventDetails.start_date).toLocaleDateString("en-US", date_options);
-    const end = new Date(eventDetails.finishing_date).toLocaleDateString("en-US", date_options);
-    return `${start} - ${end}`;
-}
+
 
 function addToHappeningNow(eventDetails) {
     happeningNow++;
@@ -76,7 +69,7 @@ function addEventToSimpleList(eventDetails) {
     bookmark_container.addEventListener("click", () => {
         bookmark.classList.toggle("fa-regular");
         bookmark.classList.toggle("fa-solid");
-        add_bookmark(eventDetails.id);
+        add_bookmark(eventDetails.id, false, false);
     });
 
     bookmark_container.appendChild(bookmark);
@@ -85,16 +78,20 @@ function addEventToSimpleList(eventDetails) {
 }
 
 
+
 async function loadHome() {
     const upcoming_events = await grabUpcomingEvents()
 
     const happening = await grabHappeningNow()
 
     setupBookmarks()
-
+    bookmarks.forEach(bookmark => {
+        add_bookmark(bookmark, true, true)
+    })
     upcoming_events.forEach((eventDetails) => addEventToSimpleList(eventDetails));
     happening.forEach(addToHappeningNow)
 }
+
 
 loadHome();
 
