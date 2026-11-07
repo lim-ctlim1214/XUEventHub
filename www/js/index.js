@@ -23,7 +23,10 @@ function addBookmarkedEvent(eventDetails){
             <p>${formatRange(eventDetails)}</p>
         </div>
     `
-
+    event.addEventListener("click", (event) => {
+        localStorage.setItem('event_to_open', eventDetails.id)
+        window.location.href = "event-description.html"
+    })
     bmevents.appendChild(event);
     if (bookmarks.length !== 0){
         document.getElementById('bookmark-disclaimer').classList.add('hidden');
@@ -43,6 +46,10 @@ function addToHappeningNow(eventDetails) {
             <p>${formatRange(eventDetails)}</p>
         </div>
     `;
+    event.addEventListener("click", (event) => {
+        localStorage.setItem('event_to_open', eventDetails.id)
+        window.location.href = "event-description.html"
+    })
     happening_container.appendChild(event);
 }
 
@@ -55,9 +62,15 @@ function addEventToSimpleList(eventDetails) {
             <h3>${eventDetails.name}</h3>
             <p>${formatRange(eventDetails)}</p>
         </div>
-    `;
+    `
+
+    eventArticle.addEventListener("click", (event) => {
+        localStorage.setItem('event_to_open', eventDetails.id)
+        window.location.href = "event-description.html"
+    })
 
     const bookmark_container = document.createElement("div")
+    bookmark_container.classList.add("bookmark-container");
 
     const isBookmarked = bookmarks.includes(eventDetails.id);
 
@@ -66,7 +79,8 @@ function addEventToSimpleList(eventDetails) {
 
     bookmark_container.appendChild(bookmark);
 
-    bookmark_container.addEventListener("click", () => {
+    bookmark_container.addEventListener("click", (e) => {
+        e.stopPropagation()
         bookmark.classList.toggle("fa-regular");
         bookmark.classList.toggle("fa-solid");
         add_bookmark(eventDetails.id, false, false);

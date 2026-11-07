@@ -13,7 +13,10 @@ async function addBookmarksToPrimaryList(id){
             <p>${formatRange(details)}</p>
         </div>
     `;
-
+    bmart.addEventListener("click", (event) => {
+        localStorage.setItem('event_to_open', details.id)
+        window.location.href = "event-description.html"
+    })
     bmlist.appendChild(bmart)
     console.log("appended")
 }
