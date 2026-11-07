@@ -7,39 +7,11 @@ const date_options = {
 
 let happeningNow = 0;
 
-let bookmarks = [];
-
-function setupBookmarks(){
-
-    if (localStorage.getItem("bookmarks")){
-        let retreived_bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
-        retreived_bookmarks.forEach(bookmark => {
-            add_bookmark(bookmark)
-        })
-
-        if (bookmarks.length !== 0){
-            document.getElementById('bookmark-disclaimer').classList.add('hidden');
-        }
-
-        return;
+function getRidOfBookmark(id){
+    document.getElementById(`bookmark-${id}`).remove();
+    if (bookmarks.length <= 0){
+        document.getElementById("bookmark-disclaimer").classList.remove("hidden");
     }
-
-   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-}
-
-async function add_bookmark(id){
-    if (bookmarks.includes(id)){
-        bookmarks = bookmarks.filter(bookmark => bookmark.id !== id);
-        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-        console.log("through")
-        return;
-    }
-    bookmarks.push(id)
-
-    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-
-    let event = await grabEventByID(id)
-    addBookmarkedEvent(event)
 }
 
 function addBookmarkedEvent(eventDetails){
@@ -47,6 +19,7 @@ function addBookmarkedEvent(eventDetails){
 
     const event = document.createElement("article")
     event.classList.add("simple-event-display");
+    event.id = `bookmark-${eventDetails.id}`
     event.innerHTML = `
         <div class="event-details">
             <h3>${eventDetails.name}</h3>
@@ -93,21 +66,17 @@ function addEventToSimpleList(eventDetails) {
 
     const bookmark_container = document.createElement("div")
 
-    const bookmark = document.createElement("i");
-    bookmark.classList.add("fa-regular", "fa-bookmark", "fa-lg");
+    const isBookmarked = bookmarks.includes(eventDetails.id);
 
-    //TODO: FIX THIS, probably change the security policy and CDN, but im kinda lazy for now.
+    const bookmark = document.createElement("i");
+    bookmark.classList.add(isBookmarked ? "fa-solid" : "fa-regular", "fa-bookmark", "fa-lg");
+
+    bookmark_container.appendChild(bookmark);
 
     bookmark_container.addEventListener("click", () => {
-        bookmark.classList.remove("fa-bookmark");
-        bookmark.classList.remove("fa-lg");
         bookmark.classList.toggle("fa-regular");
         bookmark.classList.toggle("fa-solid");
-
-        bookmark.classList.add("fa-bookmark");
-        bookmark.classList.add("fa-lg");
-
-        add_bookmark(eventDetails.id)
+        add_bookmark(eventDetails.id);
     });
 
     bookmark_container.appendChild(bookmark);
@@ -116,16 +85,15 @@ function addEventToSimpleList(eventDetails) {
 }
 
 
-
 async function loadHome() {
     const upcoming_events = await grabUpcomingEvents()
 
     const happening = await grabHappeningNow()
 
+    setupBookmarks()
+
     upcoming_events.forEach((eventDetails) => addEventToSimpleList(eventDetails));
     happening.forEach(addToHappeningNow)
-
-    setupBookmarks()
 }
 
 loadHome();

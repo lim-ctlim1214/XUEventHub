@@ -25,6 +25,41 @@ async function grabEvent(eventName) {
     return data;
 }
 
+let bookmarks = [];
+
+function setupBookmarks(){
+
+    if (localStorage.getItem("bookmarks")){
+        let retreived_bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+        retreived_bookmarks.forEach(bookmark => {
+            add_bookmark(bookmark)
+        })
+
+        if (bookmarks.length !== 0){
+            document.getElementById('bookmark-disclaimer').classList.add('hidden');
+        }
+
+        return;
+    }
+
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+}
+
+async function add_bookmark(id){
+    if (bookmarks.includes(id)){
+        bookmarks = bookmarks.filter(bookmark => bookmark !== id);
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+        getRidOfBookmark(id);
+        return;
+    }
+    bookmarks.push(id)
+
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+
+    let event = await grabEventByID(id)
+    addBookmarkedEvent(event)
+}
+
 async function grabEventByID(eventID) {
     const { data, error } = await db
         .from('Events')
