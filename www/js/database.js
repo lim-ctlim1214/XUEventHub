@@ -15,11 +15,10 @@ function todayStr() {
     const pad = n => String(n).padStart(2, "0");
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
-
 function formatRange(eventDetails) {
     const start = new Date(eventDetails.start_date).toLocaleDateString("en-US", date_options);
     const end = new Date(eventDetails.finishing_date).toLocaleDateString("en-US", date_options);
-    return `${start} - ${end}`;
+    return start === end ? start : `${start} - ${end}`;
 }
 
 async function grabEvent(eventName) {
@@ -96,6 +95,20 @@ async function grabHappeningNow() {
     return data;
 }
 
+async function grabChildEvents(parentID){
+    const {data, error} = await db
+    .from('Events')
+    .select('*')
+    .eq('parentEventID', parentID)
+    .order('start_date', { ascending: true });
+
+    if (error) {
+        console.error(error);
+        return [];
+    }
+    return data;
+}
+
 async function grabUpcomingEvents(){
     const today = todayStr();
 
@@ -112,4 +125,21 @@ async function grabUpcomingEvents(){
         return [];
     }
     return data;
+}
+
+function formatTime(time) {
+    const [h, m] = time.split(":").map(Number);
+    const period = h >= 12 ? "PM" : "AM";
+    const hour12 = h % 12 || 12;
+    return `${String(hour12).padStart(2, "0")}:${String(m).padStart(2, "0")} ${period}`;
+}
+
+function formatTimeRange(start, end) {
+    const s = formatTime(start);
+    const e = formatTime(end);
+
+    if (s === "12:00 AM" && (e === "12:00 AM" || e === "11:59 PM")) {
+        return "All Day";
+    }
+    return `${s} - ${e}`;
 }
