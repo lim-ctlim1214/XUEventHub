@@ -38,7 +38,7 @@ body {
     align-items: center;
     align-self: center;
     width: 100%;
-
+    gap: 0.75rem;
     a {
         width: 100%;
     }
@@ -212,7 +212,7 @@ body {
 }
 
 .disclaimer {
-    align-self: center;
+    text-align: center;
     color: #b5b5b5;
 }
 
@@ -330,4 +330,9 @@ body {
 
 .bookmark-container {
     pointer-events: bounding-box;
+}
+
+.pass-error {
+    text-align: center;
+    color: red;
 }
