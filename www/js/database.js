@@ -159,6 +159,8 @@ async function uploadImage(file, id){
     console.log("success")
 }
 
+
+
 async function add_bookmark(id, avoid = true, firstTimeSetup = false){
     if (bookmarks.includes(id) && !avoid){
         bookmarks = bookmarks.filter(bookmark => bookmark !== id);
@@ -313,5 +315,13 @@ async function update(details, id){
         .select()
     if (error) console.error(error);
     else console.log(data);
+}
 
+async function createEvent(details){
+    const {error} = await db
+    .from('Events')
+    .insert(details);
+
+    if (error) console.error(error);
+    else console.log(data);
 }
