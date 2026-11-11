@@ -1,26 +1,53 @@
-# XU EventHub - Last Updated: 11/7/2026 
+# XU EventHub - Last Updated: 11/11/2026 
 
 ## Implemented Features:
 
-Added Database Functionality via Supabase.
-- Database functionality was added via CDN. It accesses the main database online.
+Added Logging into Special Admin Account
+- Admin Accounts are created via the supabase auth service.
+- You can log in with your username and password.
+- Doing so creates a token that allows you to create and manage your own events.
 
-Added Happening Now, Bookmarking and Upcoming Events Display via Homepage.
-- The Homepage features 3 sections: Happening Now, Bookmarked Events and Upcoming Events.
-- The Homepage allows you to bookmark events which will immediately appear in the homepage.
-- Bookmarks are persistent and will remain in LocalStorage.
-- The Homepage also features the "Happening Now" display, which displays available events happening at that moment.
-- As of now, there is a "Happening Event" that is happening all the time.
+Added Categories!
+- Category filtering is now possible via search.
+- Each event now has their own category.
 
-Added Event Description Functionality.
-- Clicking on events brings you to the event description page.
-- This allows for users to see the details of each event.
+Added Event Management
+- Managing Events is now possible!
 
-Added Bookmark Page Functionality.
-- With bookmarks added, the bookmarks page is added as well. Users click on the bookmark icon on the top right of the homepage, and will arrive at the bookmark homepage.
+Added Event Creation
+- Creating Events is now possible!
+
+Added Secondary Events to Bookmarks
+- Secondary Events were given full functionality! Bookmarks now have them!
+
+Added Image Compatibility
+- Banners for events now show up on their respective cards.
+- Admin Event Management and Creation allows for users to submit their own banners.
+
+## Testing Results
+- Logins go through to homepage. ☑️
+- Logins refuse to go to homepage with wrong credentials. ☑️
+- Creating Events pushes through to database ☑️
+- Updating Events updates the database ☑️
+- Category Filtering in Search returns events in the same category ☑️
+- Event Banners appear ☑️
+- Bookmarking works as intended ☑️
+- Creating secondary events links them to their parent primary event ☑️
+- Accessing the Admin Page while logged out forces return to admin login page ☑️
+- Inserting and Updating the Database while Unauthenticated will return an error ☑️
+
+## List of Identified Issues and Bugs
+- Deletion does not work. (Unimplemented)
+- Despite Banners having Images, they will always show up as no file name in Admin Event Creation and Admin Event Management
+- Lacking feedback in different UI elements (unimplemented)
+- No matter what, 404 error if events don't have banners.
+- No input validation in Event Management and Creation (unimplemented)
+
+## Actions Resolved to Solving Bugs
+- To be implemented in Bug Fix Week. 
 
 ## Progress Report:
-We completed most of the features for regular end-users. We are beginning to work on Admin Event Creation, which will be implemented in Milestone 4. We encountered problems regarding time constraints. The 3 days we had paired with class hindered our ability to fully push functional requirements such as Admin Event Creation. We also encountered problems with unnecessary elements such as bookmark amount, which has been removed and will not be added in the full release. Overall, it was a productive Milestone, but we fell short of our target.
+All admin-related features have been added! However, some elements still lack significant polish. Which will be done in Milestone 5. This was due to time constraints yet again. However, since Milestone 5's deadline is in one week and 85% of the application has been finished, we expect this to be finished by then. 
 
 ## Screenshots:
 #### Homepage
