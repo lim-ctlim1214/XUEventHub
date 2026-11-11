@@ -99,16 +99,22 @@ function addEventToSimpleList(eventDetails) {
 
 
 async function loadHome() {
-    const upcoming_events = await grabUpcomingEvents()
+    try {
+        const upcoming_events = await grabUpcomingEvents()
 
-    const happening = await grabHappeningNow()
+        const happening = await grabHappeningNow()
 
-    setupBookmarks()
-    bookmarks.forEach(bookmark => {
-        add_bookmark(bookmark, true, true)
-    })
-    upcoming_events.forEach((eventDetails) => addEventToSimpleList(eventDetails));
-    happening.forEach(addToHappeningNow)
+        setupBookmarks()
+        bookmarks.forEach(bookmark => {
+            add_bookmark(bookmark, true, true)
+        })
+        upcoming_events.forEach((eventDetails) => addEventToSimpleList(eventDetails));
+        happening.forEach(addToHappeningNow)
+    } catch (err) {
+        logout()
+        loadHome()
+    }
+
 }
 
 

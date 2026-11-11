@@ -6,7 +6,11 @@ const db = createClient(
     "https://omrqbbiehkgqqgxqbtor.supabase.co",
     "sb_publishable_h_boC1E7aT-8eoV3I1GYCA_ed1V1Shp",
     {
-        accessToken: async() => token
+        accessToken: async() => {
+            if (isLoggedIn()) return token;
+            if (token) logout();
+            return null;
+        }
     }
 );
 
@@ -28,7 +32,8 @@ function logout() {
 }
 
 function isLoggedIn() {
-    return !!token;
+    const p = getPayload();
+    return !!p && p.exp * 1000 > Date.now();
 }
 
 function getPayload() {
@@ -98,6 +103,22 @@ async function searchEvents(query) {
     return data;
 }
 
+async function searchEventsByCategory(query, categoryID) {
+    const {data, error} = await db
+        .from('Events')
+        .select('*').ilike('name', `%${query}%`)
+        .eq("categoryID", categoryID)
+        .order('start_date', {ascending: true})
+
+
+    if (error) {
+        console.error(error);
+        return [];
+    }
+
+    return data;
+}
+
 async function grabAllEvents() {
     const { data, error } = await db
         .from('Events')
@@ -158,8 +179,6 @@ async function uploadImage(file, id){
 
     console.log("success")
 }
-
-
 
 async function add_bookmark(id, avoid = true, firstTimeSetup = false){
     if (bookmarks.includes(id) && !avoid){

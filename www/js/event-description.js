@@ -56,6 +56,10 @@ function addToSecondaryEvents(details){
 
 }
 
+function ontop(){
+    window.location.href = "#search-bar"
+}
+
 async function load_secondary_events(){
     let collection = await grabChildEvents(event_number)
     collection.forEach(evt => {
