@@ -30,11 +30,11 @@
             <div class="form-container">
                 <div class="form-field-rg">
                     <h3>Event Name</h3>
-                    <input class="reg-input" placeholder="Event Name" type="text"/>
+                    <input class="reg-input" id="event-name" placeholder="Event Name" type="text"/>
                 </div>
                 <div class="form-field-rg">
                     <h3>Describe Your Event</h3>
-                    <textarea class="input-textarea" ></textarea>
+                    <textarea class="input-textarea" id="event-description"></textarea>
                 </div>
                 <div class="field-container">
                     <h3>Dates Available</h3>
@@ -54,48 +54,42 @@
                     <h3>Category</h3>
                     <select class="reg-input" id="event-type">
                         <option value="">Select an Event</option>
-                        <option value="sports">Sports</option>
-                        <option value="fun">Fun</option>
                     </select>
                 </div>
                 <div class="form-field-rg">
                     <h3>Location</h3>
-                    <input class="reg-input" placeholder="Location" type="text"/>
+                    <input class="reg-input" id="location" placeholder="Location" type="text"/>
                 </div>
                 <div class="form-field-rg">
                     <h3>Attendance</h3>
-                    <input class="reg-input" placeholder="Attendance" type="text"/>
+                    <input class="reg-input" id="attendance" placeholder="Attendance" type="text"/>
                 </div>
                 <div class="form-field-rg">
                     <h3>Incentives</h3>
-                    <input class="reg-input" placeholder="Incentives" type="text"/>
+                    <input class="reg-input" id="incentives" placeholder="Incentives" type="text"/>
                 </div>
                 <div class="form-field-rg">
                     <h3>Organizers</h3>
-                    <input class="reg-input" placeholder="Organizers" type="text"/>
+                    <input class="reg-input" id="organizers" placeholder="Organizers" type="text"/>
                 </div>
                 <div class="form-field-rg">
                     <h3>Banner Image</h3>
-                    <div class="img-select">
-                        <p>Image file.jpg</p>
-                        <div class="img-file">
-                            <p>Select</p>
-                        </div>
+                    <div class="img-select" id="imgselect">
+                        <input type="file" id="img-selector" accept="image/*"/>
+                    </div>
                     </div>
                 </div>
                 <div class="form-field-rg">
                     <h3>Primary Event</h3>
                     <select class="reg-input" id="primary">
                         <option value="">None</option>
-                        <option value="txc">The Xavier Cup</option>
-                        <option value="xufd">XU Festival Days</option>
-                        <option value="semfi">Semifinal Exams</option>
+
                     </select>
                     <p class="tiny-disclaimer">If this event is a part of another event: select that event, otherwise leave it as none.</p>
                 </div>
             </div>
             <div class="save-container">
-                <div class="button-regular">
+                <div class="button-regular" id="submit">
                     <p>Save</p>
                 </div>
                 <a class="button-regular" href="admin-homepage.html">
@@ -106,4 +100,6 @@
         </div>
     </div>
 </body>
+<script src="js/database.js"></script>
+<script src="js/event-creation.js"></script>
 </html>

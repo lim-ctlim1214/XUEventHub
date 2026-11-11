@@ -38,7 +38,7 @@ body {
     align-items: center;
     align-self: center;
     width: 100%;
-
+    gap: 0.75rem;
     a {
         width: 100%;
     }
@@ -112,13 +112,11 @@ body {
     border-radius: 15px;
     text-align: center;
     padding: 2rem;
+    background-size: cover;
+    background-position: center;
     flex: 1;
     color: white;
     width: 100%;
-    background:
-            linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
-            no-repeat gray;
-    background-size: cover;
     h1 {
         margin: 0;
     }
@@ -212,7 +210,7 @@ body {
 }
 
 .disclaimer {
-    align-self: center;
+    text-align: center;
     color: #b5b5b5;
 }
 
@@ -330,4 +328,36 @@ body {
 
 .bookmark-container {
     pointer-events: bounding-box;
+}
+
+.pass-error {
+    text-align: center;
+    color: red;
+}
+
+.searchbar-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #cacaca;
+    border-radius: 15px;
+    padding: 0.5rem;
+    gap: 0.25rem;
+    .reg-input {
+        border: none;
+        padding: 0;
+    }
+}
+
+.form-field-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    select {
+        background-color: white;
+        padding: 0;
+        option {
+        }
+    }
 }

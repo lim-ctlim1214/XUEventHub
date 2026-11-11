@@ -26,7 +26,7 @@
             <a class="transparent-icon-button" onclick="window.history.back()">
                 <i class="fa-solid fa-chevron-left fa-xl"></i>
             </a>
-            <div class="search">
+            <div class="search" id="search-bar">
                 <a class="transparent-icon-button" href="search-results.html">
                     <p class="placeholder">Search for Events</p>
                 </a>
@@ -57,13 +57,10 @@
                 <div class="event-simple-list" id="secondary-events">
 
                 </div>
-                <button class="show-more-button" type="button">
-                    Show more <i class="fa-solid fa-chevron-down"></i>
-                </button>
             </section>
-            <button class="show-more-button" type="button">
+            <div class="show-more-button" onclick="ontop()">
                 Back to Top <i class="fa-solid fa-chevron-up"></i>
-            </button>
+            </div>
         </main>
     </div>
 </body>
