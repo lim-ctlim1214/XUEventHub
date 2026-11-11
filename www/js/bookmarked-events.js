@@ -23,10 +23,34 @@ async function addBookmarksToPrimaryList(id){
     console.log("appended")
 }
 
+async function addBookmarksToSecondaryList(id){
+    const selist = document.getElementById("bookmarked-secondary-list")
+    const bmart = document.createElement("article")
+
+    let details = await grabEventByID(id)
+
+    bmart.classList.add("simple-event-display")
+    bmart.innerHTML = `
+        <div class="event-details">
+            <h3>${details.name}</h3>
+            <p>${formatRange(details)}</p>
+        </div>
+    `
+    bmart.addEventListener("click", (event) => {
+        localStorage.setItem('event_to_open', details.id)
+        window.location.href = "event-description.html"
+    })
+    selist.appendChild(bmart)
+}
+
 async function setup(){
     setupBookmarks()
     bookmarks.forEach(bookmark => {
-        addBookmarksToPrimaryList(bookmark)
+        if (bookmark.parentEventID !== null) {
+            addBookmarksToSecondaryList(bookmark)
+        } else {
+            addBookmarksToPrimaryList(bookmark)
+        }
     })
 }
 

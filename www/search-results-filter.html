@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searching with Filter</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval';
+           connect-src 'self' https://omrqbbiehkgqqgxqbtor.supabase.co wss://omrqbbiehkgqqgxqbtor.supabase.co https://kit.fontawesome.com https://ka-f.fontawesome.com;
+           style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com;
+           font-src 'self' data: https://fonts.gstatic.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com;
+           script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://kit.fontawesome.com;
+           img-src 'self' data: https:;">
+</head>
+<body>
+<div class="app">
+    <div class="heading filter">
+        <a class="transparent-icon-button" href="search-results.html">
+            <i class="fa-solid fa-chevron-left fa-xl"></i>
+        </a>
+
+        <div class="searchbar-container">
+            <input id="searchbar" class="reg-input" placeholder="Search for Events" type="text"/>
+            <div class="form-field-horizontal">
+                <p>Category</p>
+                <select id="category" class="reg-input">
+
+                </select>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="content">
+        <h3>Primary Events</h3>
+        <div class="bookmarked-primary-list" id="searches">
+
+        </div>
+        <h3>Secondary Events</h3>
+        <div class="event-simple-list" id="secondaryEvents">
+
+        </div>
+    </div>
+</div>
+<script src="js/database.js"></script>
+<script src="js/search-results.js"></script>
+<script src="js/search-results-filter.js"></script>
+</body>
+</html>
