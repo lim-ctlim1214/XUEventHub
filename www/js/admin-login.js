@@ -13,3 +13,7 @@
 }
 
 document.getElementById('login-button').addEventListener('click', loginAttempt);
+
+if (isLoggedIn()){
+    window.location.href = "admin-homepage.html"
+}

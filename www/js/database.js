@@ -62,6 +62,22 @@ function todayStr() {
     const pad = n => String(n).padStart(2, "0");
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
+function createNewDate(str) {
+    if (typeof str !== "string") return "";
+    const s = str.trim();
+
+    const iso = s.match(/^(\d{4}-\d{2}-\d{2})(?:[T ]|$)/);
+    if (iso) return iso[1];
+
+    const us = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (us) {
+        const [, month, day, year] = us;
+        return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+    }
+
+    return "";
+}
+
 function formatRange(eventDetails) {
     const start = new Date(eventDetails.start_date).toLocaleDateString("en-US", date_options);
     const end = new Date(eventDetails.finishing_date).toLocaleDateString("en-US", date_options);
@@ -120,6 +136,27 @@ function setupBookmarks(){
         return;
     }
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+}
+
+async function uploadImage(file, id){
+    const ext = file.name.split('.').pop();
+    const path = `banner-${id}-${Date.now()}.${ext}`
+
+    const {error} = await db.storage.from('event-banners')
+        .upload(path, file, {contentType: file.type});
+
+    if (error){
+        console.error(error);
+        return null;
+    }
+
+    const { data } = db.storage.from('event-banners').getPublicUrl(path);
+
+    await db.from('Events')
+        .update({banner_filename: data.publicUrl})
+        .eq("id", id)
+
+    console.log("success")
 }
 
 async function add_bookmark(id, avoid = true, firstTimeSetup = false){
@@ -201,6 +238,30 @@ async function grabUpcomingEvents(){
     return data;
 }
 
+async function grabCategoryByID(ID){
+    const {data, error} = await db
+    .from('Category')
+        .select('*')
+        .eq('category_id', ID)
+        .single()
+    if (error) {
+        console.error(error);
+        return null;
+    }
+    return data;
+}
+
+async function grabAllCategories(){
+    const {data, error} = await db
+    .from('Category').select('*')
+
+    if (error) {
+        console.error(error);
+        return [];
+    }
+    return data;
+}
+
 function formatTime(time) {
     const [h, m] = time.split(":").map(Number);
     const period = h >= 12 ? "PM" : "AM";
@@ -229,4 +290,28 @@ async function getAllEventsFromUser(user_id){
         return null;
     }
     return data;
+}
+
+function createNewTime(str) {
+    if (typeof str !== "string") return "";
+
+    const match = str.trim().match(/^(\d{1,2}):(\d{2})(?::\d{2}(?:\.\d+)?)?$/);
+    if (!match) return "";
+
+    const hours = parseInt(match[1], 10);
+    const minutes = parseInt(match[2], 10);
+    if (hours > 23 || minutes > 59) return "";
+
+    return `${String(hours).padStart(2, "0")}:${match[2]}`;
+}
+
+async function update(details, id){
+    const {data, error} = await db
+    .from('Events')
+        .update(details)
+        .eq("id", id)
+        .select()
+    if (error) console.error(error);
+    else console.log(data);
+
 }

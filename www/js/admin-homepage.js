@@ -6,10 +6,25 @@ async function addToPrimaryEventList(details){
     const peArticle = document.createElement('article')
     peArticle.classList.add('primary-event')
     peArticle.classList.add('searchworthy')
+
+
+        peArticle.style.backgroundImage = `
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        url("${details.banner_filename}")`;
+        peArticle.style.backgroundRepeat = 'no-repeat';
+        peArticle.style.backgroundSize = 'cover';
+        peArticle.style.backgroundPositionY = 'center';
+        peArticle.style.backgroundPositionX = 'center';
+
+
     peArticle.innerHTML = `
         <h1>${details.name}</h1>
         <p>${formatRange(details)}</p>
     `
+    peArticle.addEventListener('click', (e) => {
+        localStorage.setItem('event_to_manage', details.id)
+        window.location.href='event-management.html'
+    })
     pelist.appendChild(peArticle);
 }
 
@@ -17,27 +32,38 @@ async function addToSecondaryEventList(details){
     const slist = document.getElementById('ev-list')
 
     const sArticle = document.createElement('article')
-    slist.classList.add('simple-event-display')
-    slist.innerHTML = `
+    sArticle.classList.add('simple-event-display')
+    sArticle.innerHTML = `
         <div class="event-details">
             <h3>${details.name}</h3>
             <p>${formatRange(details)} @ ${formatTime(details.start_time)}</p>
         </div>
     `
+    sArticle.addEventListener('click', (e) => {
+        e.preventDefault()
+        localStorage.setItem('event_to_manage', details.id)
+        window.location.href='event-management.html'
+    })
+
     slist.appendChild(sArticle)
 }
 
 async function setup(){
-    const userID = getUserId();
-    let EventList = await getAllEventsFromUser(userID);
-
-    EventList.forEach(event => {
-        if (event.parentEventID === null){
-            addToPrimaryEventList(event);
-        } else {
-            addToSecondaryEventList(event);
-        }
-    })
+    try {
+        const userID = getUserId();
+        let EventList = await getAllEventsFromUser(userID);
+        EventList.forEach(event => {
+            if (event.parentEventID === null) {
+                addToPrimaryEventList(event);
+            } else {
+                addToSecondaryEventList(event);
+            }
+        })
+    }
+    catch(error){
+        window.location.href = "admin-login.html"
+        logout()
+    }
 }
 
 setup()

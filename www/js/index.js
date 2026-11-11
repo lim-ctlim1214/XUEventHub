@@ -41,11 +41,15 @@ function addToHappeningNow(eventDetails) {
     const event = document.createElement("a");
     event.classList.add("transparent-icon-button");
     event.innerHTML = `
-        <div class="primary-event" style="background-image: none">
-            <h1>${eventDetails.name}</h1>
-            <p>${formatRange(eventDetails)}</p>
-        </div>
+    <div class="primary-event" style="background-image:
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        url('${eventDetails.banner_filename}');">
+        <h1>${eventDetails.name}</h1>
+     <p>${formatRange(eventDetails)}</p>
+    </div>
     `;
+
+
     event.addEventListener("click", (event) => {
         localStorage.setItem('event_to_open', eventDetails.id)
         window.location.href = "event-description.html"
@@ -63,6 +67,7 @@ function addEventToSimpleList(eventDetails) {
             <p>${formatRange(eventDetails)}</p>
         </div>
     `
+
 
     eventArticle.addEventListener("click", (event) => {
         localStorage.setItem('event_to_open', eventDetails.id)
