@@ -68,7 +68,7 @@ async function submitAllEntries(){
         attendance: attendance.value
     }
     await update(details, eventID)
-
+    await uploadImage(bannerUploaded, eventID)
 }
 
 async function setup(){
@@ -78,7 +78,14 @@ async function setup(){
 
 document.getElementById('save').addEventListener('click', function(){
     submitAllEntries();
-    //TODO: ADD POPUP IN CORDOVA.
+
+})
+
+let bannerUploaded;
+
+document.getElementById('img-selector').addEventListener('change', async (e) => {
+    bannerUploaded = e.target.files[0]
+    if (!bannerUploaded) return;
 })
 
 setup()

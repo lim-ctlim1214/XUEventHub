@@ -8,7 +8,9 @@ async function addBookmarksToPrimaryList(id){
 
     bmart.classList.add("transparent-icon-button");
     bmart.innerHTML = `
-        <div class="primary-event searchworthy">
+        <div class="primary-event searchworthy" style="background-image:
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        url('${details.banner_filename}');">
             <h1>${details.name}</h1>
             <p>${formatRange(details)}</p>
         </div>

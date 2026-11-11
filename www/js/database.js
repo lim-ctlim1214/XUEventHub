@@ -138,6 +138,27 @@ function setupBookmarks(){
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
 }
 
+async function uploadImage(file, id){
+    const ext = file.name.split('.').pop();
+    const path = `banner-${id}-${Date.now()}.${ext}`
+
+    const {error} = await db.storage.from('event-banners')
+        .upload(path, file, {contentType: file.type});
+
+    if (error){
+        console.error(error);
+        return null;
+    }
+
+    const { data } = db.storage.from('event-banners').getPublicUrl(path);
+
+    await db.from('Events')
+        .update({banner_filename: data.publicUrl})
+        .eq("id", id)
+
+    console.log("success")
+}
+
 async function add_bookmark(id, avoid = true, firstTimeSetup = false){
     if (bookmarks.includes(id) && !avoid){
         bookmarks = bookmarks.filter(bookmark => bookmark !== id);

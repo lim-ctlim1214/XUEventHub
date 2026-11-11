@@ -6,6 +6,17 @@ async function addToPrimaryEventList(details){
     const peArticle = document.createElement('article')
     peArticle.classList.add('primary-event')
     peArticle.classList.add('searchworthy')
+
+
+        peArticle.style.backgroundImage = `
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        url("${details.banner_filename}")`;
+        peArticle.style.backgroundRepeat = 'no-repeat';
+        peArticle.style.backgroundSize = 'cover';
+        peArticle.style.backgroundPositionY = 'center';
+        peArticle.style.backgroundPositionX = 'center';
+
+
     peArticle.innerHTML = `
         <h1>${details.name}</h1>
         <p>${formatRange(details)}</p>
@@ -50,7 +61,8 @@ async function setup(){
         })
     }
     catch(error){
-        window.location.href = "admin-login.js"
+        window.location.href = "admin-login.html"
+        logout()
     }
 }
 

@@ -11,6 +11,14 @@ async function load_event(){
         <h1>${eventTaken.name}</h1>
         <p>${formatRange(eventTaken)}</p>
     `
+    eventcard.style.backgroundImage = `
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        url("${eventTaken.banner_filename}")`;
+    eventcard.style.backgroundRepeat = 'no-repeat';
+    eventcard.style.backgroundSize = 'cover';
+    eventcard.style.backgroundPositionY = 'center';
+    eventcard.style.backgroundPositionX = 'center';
+
 
     const description = document.getElementById("description");
     description.innerText = eventTaken.description
