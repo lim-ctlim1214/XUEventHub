@@ -26,9 +26,14 @@ async function submitAll() {
         location: locationNode.value,
         organizers: organizers.value,
         incentives: incentives.value,
-        attendance: attendance.value
+        attendance: attendance.value,
+        event_owner: getUserId(),
+        parentEventID: primaryEvent.value
     }
-    await createEvent(details)
+    let event_id = await createEvent(details)
+    if (!event_id) return
+    if (bannerUploaded) await uploadImage(bannerUploaded, event_id)
+    console.log(details)
 }
 
 async function addAllCategories(){
@@ -42,7 +47,20 @@ async function addAllCategories(){
     })
 }
 
+async function addAllOwnedPrimaryEvents(){
+    let events = await getAllEventsFromUser(getUserId())
+    events.forEach(event => {
+        if (event.parentEventID == null){
+            let option = document.createElement('option');
+            option.value = event.id;
+            option.text = event.name;
+            primaryEvent.appendChild(option)
+        }
+    })
+}
+
 async function setup(){
+    await addAllOwnedPrimaryEvents();
     await addAllCategories();
 }
 
@@ -51,4 +69,11 @@ setup()
 document.getElementById('submit').addEventListener('click', (e) => {
     e.preventDefault()
     submitAll()
+})
+
+let bannerUploaded;
+
+document.getElementById('img-selector').addEventListener('change', async (e) => {
+    if (!e.target.files[0]) return;
+    bannerUploaded = e.target.files[0]
 })

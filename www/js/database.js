@@ -318,10 +318,15 @@ async function update(details, id){
 }
 
 async function createEvent(details){
-    const {error} = await db
+    const {data, error} = await db
     .from('Events')
-    .insert(details);
+    .insert(details)
+    .select('id').single();
 
-    if (error) console.error(error);
+    if (error){
+        console.error(error);
+        return null;
+    }
     else console.log(data);
+    return data.id
 }

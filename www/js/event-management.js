@@ -68,7 +68,7 @@ async function submitAllEntries(){
         attendance: attendance.value
     }
     await update(details, eventID)
-    await uploadImage(bannerUploaded, eventID)
+    if (bannerUploaded) await uploadImage(bannerUploaded, eventID)
 }
 
 async function setup(){
@@ -84,8 +84,8 @@ document.getElementById('save').addEventListener('click', function(){
 let bannerUploaded;
 
 document.getElementById('img-selector').addEventListener('change', async (e) => {
+    if (!e.target.files[0]) return;
     bannerUploaded = e.target.files[0]
-    if (!bannerUploaded) return;
 })
 
 setup()
