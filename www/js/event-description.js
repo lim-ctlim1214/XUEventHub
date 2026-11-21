@@ -67,4 +67,38 @@ async function load_secondary_events(){
     })
 }
 
+let bookmarkArray
+let isBookmarked = false;
+let bmIcon = document.getElementById('bookmark-icon');
+
+function bookmark(){
+    if (isBookmarked){
+        bookmarkArray = bookmarkArray.filter(bookmark => bookmark !== Number(event_number));
+        isBookmarked = false;
+        bmIcon.classList.remove('fa-solid');
+        bmIcon.classList.add('fa-regular');
+        console.log(bookmarkArray)
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarkArray));
+    }
+    else {
+        bookmarkArray.push(Number(event_number));
+        isBookmarked = true;
+        bmIcon.classList.remove('fa-regular');
+        bmIcon.classList.add('fa-solid');
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarkArray));
+    }
+}
+
+function loadBookmarks(){
+    bookmarkArray = JSON.parse(localStorage.getItem("bookmarks"));
+    if (bookmarkArray.includes(Number(event_number))){
+        isBookmarked = true;
+        bmIcon.classList.remove('fa-regular');
+        bmIcon.classList.add('fa-solid');
+        console.log("bookmarked")
+    }
+}
+
+
 load_event()
+loadBookmarks();

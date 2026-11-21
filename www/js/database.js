@@ -204,6 +204,9 @@ async function add_bookmark(id, avoid = true, firstTimeSetup = false){
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
 
     let event = await grabEventByID(id)
+    if (event === null){
+        return
+    }
     addBookmarkedEvent(event)
 }
 
