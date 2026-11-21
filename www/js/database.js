@@ -89,6 +89,17 @@ function formatRange(eventDetails) {
     return start === end ? start : `${start} - ${end}`;
 }
 
+async function deleteEventByID(id){
+    const {data, error} =
+        await db.from('Events').delete().eq('id', id).
+        eq('event_owner', getUserId())
+            .select();
+    if (error) {
+        throw error;
+    }
+    return data.length > 0;
+}
+
 async function searchEvents(query) {
     const {data, error} = await db
         .from('Events')

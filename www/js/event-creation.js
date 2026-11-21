@@ -28,12 +28,18 @@ async function submitAll() {
         incentives: incentives.value,
         attendance: attendance.value,
         event_owner: getUserId(),
-        parentEventID: primaryEvent.value
+        parentEventID: primaryEvent.value ? Number(primaryEvent.value) : null
     }
+    console.log(details)
     let event_id = await createEvent(details)
     if (!event_id) return
     if (bannerUploaded) await uploadImage(bannerUploaded, event_id)
-    console.log(details)
+    navigator.notification.alert(
+        'Event Successfully Created',
+        () => { window.location.href = 'admin-homepage.html'; },
+        'Success',
+        'OK'
+    );
 }
 
 async function addAllCategories(){

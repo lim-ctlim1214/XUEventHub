@@ -19,7 +19,11 @@
            img-src 'self' data: https:;">
 </head>
 <body>
+
 <div class="app">
+  <div class="overlay hidden" id="overlay">
+
+  </div>
   <header class="heading">
     <a class="transparent-icon-button" href="admin-homepage.html">
       <i class="fa-solid fa-chevron-left fa-xl"></i>
@@ -90,13 +94,14 @@
       <div class="button-regular" id="save">
         <p>Save</p>
       </div>
-      <div class="button-regular">
+      <div class="button-regular" onclick="deleteEvent()">
         <p style="color: red;">Delete</p>
       </div>
     </div>
   </div>
 </div>
 </body>
+<script src="cordova.js"></script>
 <script src="js/database.js"></script>
 <script src="js/event-management.js"></script>
 </html>

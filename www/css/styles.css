@@ -361,3 +361,18 @@ body {
         }
     }
 }
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    z-index: 999;
+}
+
+.overlay.hidden {
+    display: none;
+}

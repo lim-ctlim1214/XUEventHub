@@ -1,4 +1,5 @@
-﻿if (!isLoggedIn()) window.location.href = "admin-login.html";
+﻿
+if (!isLoggedIn()) window.location.href = "admin-login.html";
 
 let eventID = localStorage.getItem('event_to_manage')
 
@@ -69,6 +70,12 @@ async function submitAllEntries(){
     }
     await update(details, eventID)
     if (bannerUploaded) await uploadImage(bannerUploaded, eventID)
+    navigator.notification.alert(
+        'Event Details Saved',
+        () => { window.location.href = 'admin-homepage.html'; },
+        'Success',
+        'OK'
+    );
 }
 
 async function setup(){
@@ -87,6 +94,35 @@ document.getElementById('img-selector').addEventListener('change', async (e) => 
     if (!e.target.files[0]) return;
     bannerUploaded = e.target.files[0]
 })
+
+function deleteEvent(){
+    document.getElementById('overlay').classList.remove('hidden');
+
+    navigator.notification.confirm(
+        'Are you sure you want to delete this event?',
+        (choice) => {
+            if (choice === 1) confirmDeletion()
+            else document.getElementById('overlay').classList.add('hidden');
+        },
+        'Delete Event?',
+        ['Delete', 'Cancel']
+    )
+}
+
+async function confirmDeletion(){
+    const isDeleted = await deleteEventByID(eventID)
+    if (isDeleted){
+        navigator.notification.alert(
+            'Event Successfully Deleted',
+            () => { window.location.href = 'admin-homepage.html'; },
+            'Success',
+            'OK'
+        );
+    } else {
+        navigator.notification.alert("Error deleting event, contact your administrator.", null, 'Error', 'OK')
+    }
+
+}
 
 setup()
 
