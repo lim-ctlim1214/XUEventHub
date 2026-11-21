@@ -55,6 +55,12 @@ async function addAllCategories(){
 }
 
 async function submitAllEntries(){
+    const problem = validate()
+    if (problem) {
+        showError(problem)
+        return;
+    }
+
     let details = {
         name: eventName.value,
         description: eventDescription.value,
@@ -122,6 +128,33 @@ async function confirmDeletion(){
         navigator.notification.alert("Error deleting event, contact your administrator.", null, 'Error', 'OK')
     }
 
+}
+
+function showError(message) {
+    if (navigator.notification) {
+        navigator.notification.alert(message, null, 'Check your input', 'OK');
+    } else {
+        alert(message);
+    }
+}
+
+function validate() {
+    if (!eventName.value.trim()) return 'Event name is required.';
+    if (eventName.value.trim().length > 100) return 'Event name is too long (max 100 characters).';
+    if (!eventDescription.value.trim()) return 'Description is required.';
+
+    if (!startDate.value || !endDate.value) return 'Please pick a start and end date.';
+    if (endDate.value < startDate.value) return 'End date cannot be before the start date.';
+
+    if (!startTime.value || !endTime.value) return 'Please pick a start and end time.';
+    if (startDate.value === endDate.value && endTime.value <= startTime.value) {
+        return 'End time must be after the start time on a single-day event.';
+    }
+
+    if (!category.value) return 'Please choose a category.';
+    if (!locationNode.value.trim()) return 'Location is required.';
+
+    return null;
 }
 
 setup()

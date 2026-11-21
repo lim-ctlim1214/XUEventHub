@@ -162,9 +162,6 @@ let bookmarks = [];
 function setupBookmarks(){
     if (localStorage.getItem("bookmarks")){
         bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
-        if (bookmarks.length !== 0){
-            document.getElementById('bookmark-disclaimer').classList.add('hidden');
-        }
         return;
     }
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
