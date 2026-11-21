@@ -89,6 +89,17 @@ function formatRange(eventDetails) {
     return start === end ? start : `${start} - ${end}`;
 }
 
+async function deleteEventByID(id){
+    const {data, error} =
+        await db.from('Events').delete().eq('id', id).
+        eq('event_owner', getUserId())
+            .select();
+    if (error) {
+        throw error;
+    }
+    return data.length > 0;
+}
+
 async function searchEvents(query) {
     const {data, error} = await db
         .from('Events')
@@ -104,18 +115,16 @@ async function searchEvents(query) {
 }
 
 async function searchEventsByCategory(query, categoryID) {
-    const {data, error} = await db
+    let q = db
         .from('Events')
-        .select('*').ilike('name', `%${query}%`)
-        .eq("categoryID", categoryID)
-        .order('start_date', {ascending: true})
+        .select('*')
+        .order('start_date', { ascending: true });
 
+    if (query) q = q.ilike('name', `%${query}%`);
+    if (categoryID) q = q.eq('categoryID', Number(categoryID));
 
-    if (error) {
-        console.error(error);
-        return [];
-    }
-
+    const { data, error } = await q;
+    if (error) { console.error(error); return []; }
     return data;
 }
 
@@ -151,9 +160,6 @@ let bookmarks = [];
 function setupBookmarks(){
     if (localStorage.getItem("bookmarks")){
         bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
-        if (bookmarks.length !== 0){
-            document.getElementById('bookmark-disclaimer').classList.add('hidden');
-        }
         return;
     }
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
@@ -193,6 +199,9 @@ async function add_bookmark(id, avoid = true, firstTimeSetup = false){
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
 
     let event = await grabEventByID(id)
+    if (event === null){
+        return
+    }
     addBookmarkedEvent(event)
 }
 

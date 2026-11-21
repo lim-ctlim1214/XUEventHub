@@ -1,4 +1,5 @@
-﻿if (!isLoggedIn()) window.location.href = "admin-login.html";
+﻿
+if (!isLoggedIn()) window.location.href = "admin-login.html";
 
 let eventID = localStorage.getItem('event_to_manage')
 
@@ -54,6 +55,12 @@ async function addAllCategories(){
 }
 
 async function submitAllEntries(){
+    const problem = validate()
+    if (problem) {
+        showError(problem)
+        return;
+    }
+
     let details = {
         name: eventName.value,
         description: eventDescription.value,
@@ -69,6 +76,12 @@ async function submitAllEntries(){
     }
     await update(details, eventID)
     if (bannerUploaded) await uploadImage(bannerUploaded, eventID)
+    navigator.notification.alert(
+        'Event Details Saved',
+        () => { window.location.href = 'admin-homepage.html'; },
+        'Success',
+        'OK'
+    );
 }
 
 async function setup(){
@@ -87,6 +100,62 @@ document.getElementById('img-selector').addEventListener('change', async (e) => 
     if (!e.target.files[0]) return;
     bannerUploaded = e.target.files[0]
 })
+
+function deleteEvent(){
+    document.getElementById('overlay').classList.remove('hidden');
+
+    navigator.notification.confirm(
+        'Are you sure you want to delete this event?',
+        (choice) => {
+            if (choice === 1) confirmDeletion()
+            else document.getElementById('overlay').classList.add('hidden');
+        },
+        'Delete Event?',
+        ['Delete', 'Cancel']
+    )
+}
+
+async function confirmDeletion(){
+    const isDeleted = await deleteEventByID(eventID)
+    if (isDeleted){
+        navigator.notification.alert(
+            'Event Successfully Deleted',
+            () => { window.location.href = 'admin-homepage.html'; },
+            'Success',
+            'OK'
+        );
+    } else {
+        navigator.notification.alert("Error deleting event, contact your administrator.", null, 'Error', 'OK')
+    }
+
+}
+
+function showError(message) {
+    if (navigator.notification) {
+        navigator.notification.alert(message, null, 'Check your input', 'OK');
+    } else {
+        alert(message);
+    }
+}
+
+function validate() {
+    if (!eventName.value.trim()) return 'Event name is required.';
+    if (eventName.value.trim().length > 100) return 'Event name is too long (max 100 characters).';
+    if (!eventDescription.value.trim()) return 'Description is required.';
+
+    if (!startDate.value || !endDate.value) return 'Please pick a start and end date.';
+    if (endDate.value < startDate.value) return 'End date cannot be before the start date.';
+
+    if (!startTime.value || !endTime.value) return 'Please pick a start and end time.';
+    if (startDate.value === endDate.value && endTime.value <= startTime.value) {
+        return 'End time must be after the start time on a single-day event.';
+    }
+
+    if (!category.value) return 'Please choose a category.';
+    if (!locationNode.value.trim()) return 'Location is required.';
+
+    return null;
+}
 
 setup()
 

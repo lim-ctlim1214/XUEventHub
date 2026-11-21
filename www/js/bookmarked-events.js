@@ -5,6 +5,11 @@ async function addBookmarksToPrimaryList(id){
     const bmart = document.createElement("a")
 
     let details = await grabEventByID(id)
+    if (details.parentEventID !== null){
+        addBookmarksToSecondaryList(details)
+        document.getElementById("bookmark-secondary-disclaimer").style.display = "none"
+        return
+    }
 
     bmart.classList.add("transparent-icon-button");
     bmart.innerHTML = `
@@ -20,20 +25,19 @@ async function addBookmarksToPrimaryList(id){
         window.location.href = "event-description.html"
     })
     bmlist.appendChild(bmart)
-    console.log("appended")
+    document.getElementById("bookmark-primary-disclaimer").style.display = "none"
 }
 
-async function addBookmarksToSecondaryList(id){
-    const selist = document.getElementById("bookmarked-secondary-list")
-    const bmart = document.createElement("article")
+const selist = document.getElementById("bookmarked-secondary-list")
+async function addBookmarksToSecondaryList(details){
 
-    let details = await grabEventByID(id)
+    const bmart = document.createElement("article")
 
     bmart.classList.add("simple-event-display")
     bmart.innerHTML = `
         <div class="event-details">
             <h3>${details.name}</h3>
-            <p>${formatRange(details)}</p>
+            <p>${formatRange(details)} @ ${formatTimeRange(details.start_time, details.finishing_time)}</p>
         </div>
     `
     bmart.addEventListener("click", (event) => {
@@ -46,12 +50,9 @@ async function addBookmarksToSecondaryList(id){
 async function setup(){
     setupBookmarks()
     bookmarks.forEach(bookmark => {
-        if (bookmark.parentEventID !== null) {
-            addBookmarksToSecondaryList(bookmark)
-        } else {
-            addBookmarksToPrimaryList(bookmark)
-        }
+        addBookmarksToPrimaryList(bookmark)
     })
+
 }
 
 setup()
