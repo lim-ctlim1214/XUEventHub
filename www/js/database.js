@@ -115,18 +115,16 @@ async function searchEvents(query) {
 }
 
 async function searchEventsByCategory(query, categoryID) {
-    const {data, error} = await db
+    let q = db
         .from('Events')
-        .select('*').ilike('name', `%${query}%`)
-        .eq("categoryID", categoryID)
-        .order('start_date', {ascending: true})
+        .select('*')
+        .order('start_date', { ascending: true });
 
+    if (query) q = q.ilike('name', `%${query}%`);
+    if (categoryID) q = q.eq('categoryID', Number(categoryID));
 
-    if (error) {
-        console.error(error);
-        return [];
-    }
-
+    const { data, error } = await q;
+    if (error) { console.error(error); return []; }
     return data;
 }
 
