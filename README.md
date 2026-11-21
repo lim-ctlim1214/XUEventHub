@@ -1,28 +1,14 @@
-# XU EventHub - Last Updated: 11/11/2026 
+# XU EventHub - Last Updated: 11/21/2026 
 
-## Implemented Features:
+## Implemented Features (Release Candidate 1):
+- Added Bookmarking from Event Description
+- Input Validation to Event Management and Creation
+- Support for Cordova Plugins
 
-Added Logging into Special Admin Account
-- Admin Accounts are created via the supabase auth service.
-- You can log in with your username and password.
-- Doing so creates a token that allows you to create and manage your own events.
-
-Added Categories!
-- Category filtering is now possible via search.
-- Each event now has their own category.
-
-Added Event Management
-- Managing Events is now possible!
-
-Added Event Creation
-- Creating Events is now possible!
-
-Added Secondary Events to Bookmarks
-- Secondary Events were given full functionality! Bookmarks now have them!
-
-Added Image Compatibility
-- Banners for events now show up on their respective cards.
-- Admin Event Management and Creation allows for users to submit their own banners.
+### Bug Fixes
+- Added Feedback to Event Creation and Event Management
+- Fixed a bug regarding Primary Event Creation
+- Fixed a bug regarding categories
 
 ## Testing Results
 - Logins go through to homepage. ☑️
@@ -37,17 +23,11 @@ Added Image Compatibility
 - Inserting and Updating the Database while Unauthenticated will return an error ☑️
 
 ## List of Identified Issues and Bugs
-- Deletion does not work. (Unimplemented)
 - Despite Banners having Images, they will always show up as no file name in Admin Event Creation and Admin Event Management
-- Lacking feedback in different UI elements (unimplemented)
 - No matter what, 404 error if events don't have banners.
-- No input validation in Event Management and Creation (unimplemented)
-
-## Actions Resolved to Solving Bugs
-- To be implemented in Bug Fix Week. 
 
 ## Progress Report:
-All admin-related features have been added! However, some elements still lack significant polish. Which will be done in Milestone 5. This was due to time constraints yet again. However, since Milestone 5's deadline is in one week and 85% of the application has been finished, we expect this to be finished by then. 
+- 95% Completion. This is a release candidate version of the application. Any bugs found in the following week can be patched.
 
 ## Screenshots:
 #### Homepage
@@ -81,6 +61,10 @@ All admin-related features have been added! However, some elements still lack si
 <img width="337" height="750" alt="image" src="https://github.com/user-attachments/assets/ae7049d8-e5fb-40ce-97ac-9afcf7b2e041" />
 
 ## How To Run:
+Dependency: 
+Install cordova-plugin-dialogs with the command:
+cordova plugin add cordova-plugin-dialogs
+
 There are 2 necessary commands needed to run this application:
 
 cordova build android: Builds the Application for Android Devices
