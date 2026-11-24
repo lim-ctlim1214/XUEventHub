@@ -1,5 +1,5 @@
 const categoryNode = document.getElementById('category');
-const searchInput = document.getElementById('searchbar');
+const searchInput = document.getElementById('searchfilter');
 
 async function setAllCategories() {
     let categories = await grabAllCategories();
