@@ -1,14 +1,12 @@
-# XU EventHub - Last Updated: 11/21/2026 
+# XU EventHub - Last Updated: 11/24/2026 
 
-## Implemented Features (Release Candidate 1):
-- Added Bookmarking from Event Description
-- Input Validation to Event Management and Creation
-- Support for Cordova Plugins
+## Implemented Features (Release Candidate 2):
+- Added Searchable Created Events
+- Minor Tweaks to Wording
+- Refactoring
 
 ### Bug Fixes
-- Added Feedback to Event Creation and Event Management
-- Fixed a bug regarding Primary Event Creation
-- Fixed a bug regarding categories
+- Fixed a bug regarding secondary events not showing up properly in Search Results
 
 ## Testing Results
 - Logins go through to homepage. ☑️
