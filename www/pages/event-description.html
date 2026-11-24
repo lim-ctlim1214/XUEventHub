@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Event Description</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
@@ -22,36 +22,47 @@
 
 <body>
     <div class="app">
-
         <header class="heading">
-            <a class="transparent-icon-button" href="index.html">
+            <a class="transparent-icon-button" onclick="window.history.back()">
                 <i class="fa-solid fa-chevron-left fa-xl"></i>
             </a>
-
-            <div class="search" onclick="window.location.href = 'search-results.html'">
-                <p class="placeholder">Search All Events</p>
+            <div class="search" id="search-bar">
+                <a class="transparent-icon-button" href="search-results.html">
+                    <p class="placeholder">Search for Events</p>
+                </a>
             </div>
-
-
-
+            <a class="transparent-icon-button" onclick="bookmark()">
+                <i id="bookmark-icon" class="fa-regular fa-bookmark fa-xl"></i>
+            </a>
         </header>
-
         <main class="content">
-            <section class="primary-event-list">
-                <h3>Bookmarked Events</h3>
-                <div class="bookmarked-primary-list" id="bookmarked-primary-list">
-                    <p class="disclaimer-text" id="bookmark-primary-disclaimer">No events have been bookmarked.</p>
+                <div class="primary-event" id="event-card">
+
+                </div>
+            <section class="event-information-card">
+                <h2>About Event</h2>
+                <p class="event-about-description" id="description">
+
+                </p>
+            </section>
+            <section class="event-information-card quick-details" id="quick-details">
+                <h2>Quick Details</h2>
+                <p>Loading Details...</p>
+
+            </section>
+
+            <section class="event-list-container" >
+                <h2>Secondary Events</h2>
+                <div class="event-simple-list" id="secondary-events">
+
                 </div>
             </section>
-            <section class="event-list-container">
-                <div class="event-simple-list" id="bookmarked-secondary-list">
-                    <h3>Secondary Events</h3>
-                    <p class="disclaimer-text" id="bookmark-secondary-disclaimer">No events have been bookmarked.</p>
-                </div>
-            </section>
+            <div class="show-more-button" onclick="ontop()">
+                Back to Top <i class="fa-solid fa-chevron-up"></i>
+            </div>
         </main>
     </div>
 </body>
-<script src="js/database.js"></script>
-<script src="js/bookmarked-events.js"></script>
+<script src="../js/database.js"></script>
+<script src="../js/event-description.js"></script>
 </html>

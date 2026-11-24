@@ -25,7 +25,7 @@ function addBookmarkedEvent(eventDetails){
     `
     event.addEventListener("click", (event) => {
         localStorage.setItem('event_to_open', eventDetails.id)
-        window.location.href = "event-description.html"
+        window.location.href = "pages/event-description.html"
     })
     bmevents.appendChild(event);
     if (bookmarks.length !== 0){
@@ -52,7 +52,7 @@ function addToHappeningNow(eventDetails) {
 
     event.addEventListener("click", (event) => {
         localStorage.setItem('event_to_open', eventDetails.id)
-        window.location.href = "event-description.html"
+        window.location.href = "pages/event-description.html"
     })
     happening_container.appendChild(event);
 }
@@ -71,7 +71,7 @@ function addEventToSimpleList(eventDetails) {
 
     eventArticle.addEventListener("click", (event) => {
         localStorage.setItem('event_to_open', eventDetails.id)
-        window.location.href = "event-description.html"
+        window.location.href = "pages/event-description.html"
     })
 
     const bookmark_container = document.createElement("div")
