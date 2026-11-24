@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Searching</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Admin Homepage</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
@@ -19,30 +19,37 @@
            img-src 'self' data: https:;">
 </head>
 <body>
-<div class="app">
-    <div class="heading">
-        <a class="transparent-icon-button" href="index.html">
-            <i class="fa-solid fa-chevron-left fa-xl"></i>
-        </a>
-
-        <input id="searchbar" class="reg-input" placeholder="Search for Events" type="text"/>
-
-        <a class="transparent-icon-button" href="search-results-filter.html">
-            <i class="fa-solid fa-filter fa-2xl"></i>
-        </a>
-    </div>
-    <div class="content">
-        <h3>Primary Events</h3>
-        <div class="bookmarked-primary-list" id="searches">
-
+    <div class="app">
+        <div class="heading">
+            <a class="transparent-icon-button" href="../index.html">
+                <i class="fa-solid fa-chevron-left fa-xl"></i>
+            </a>
+            <div class="search" id="search-bar">
+                <a class="transparent-icon-button" href="search-results-created.html">
+                    <p class="placeholder">Search for Created Events</p>
+                </a>
+            </div>
+            <a class="transparent-icon-button" href="event-creation.html" aria-label="Create Event">
+                <i class="fa-solid fa-paintbrush fa-xl"></i>
+            </a>
         </div>
-        <h3>Secondary Events</h3>
-        <div class="event-simple-list" id="secondaryEvents">
+        <div class="content">
+            <div class="happening-now" id="primary-event-list">
+                <h3>Manage Primary Events</h3>
 
+            </div>
+            <div class="event-list-container">
+                <h3>Manage Secondary Events</h3>
+                <div class="event-simple-list" id="ev-list">
+
+                </div>
+            </div>
         </div>
+        <footer class="admin-view-text">
+            <p>Admin View</p>
+        </footer>
     </div>
-</div>
 </body>
-<script src="js/database.js"></script>
-<script src="js/search-results.js"></script>
+<script src="../js/database.js"></script>
+<script src="../js/admin-homepage.js"></script>
 </html>
