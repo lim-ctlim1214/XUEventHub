@@ -1,7 +1,7 @@
 {
-  "name": "org.apache.cordova.hellocordova",
+  "name": "org.itcc41.group3.xueventhub",
   "displayName": "XU EventHub",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A Mobile Application for Discovering Campus Events and Student Activities",
   "main": "index.js",
   "scripts": {
