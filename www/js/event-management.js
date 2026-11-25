@@ -16,6 +16,7 @@ const incentives = document.getElementById('incentives')
 const organizers = document.getElementById('organizers')
 const primaryEvent = document.getElementById('primary')
 const managingHeader = document.getElementById('managing-header')
+const imgDisclaimer = document.getElementById('img-disclaimer')
 
 async function addAllDetails(){
     let event = await grabEventByID(eventID);
@@ -33,6 +34,10 @@ async function addAllDetails(){
     attendance.value = event.attendance;
     incentives.value = event.incentives;
     organizers.value = event.organizers;
+
+    if (!event.banner_filename){
+        imgDisclaimer.innerText = 'No Banner Image was uploaded.'
+    }
 
     if (event.parentEventID !== null){
         let parentEvent = await grabEventByID(event.parentEventID)
@@ -99,6 +104,12 @@ let bannerUploaded;
 document.getElementById('img-selector').addEventListener('change', async (e) => {
     if (!e.target.files[0]) return;
     bannerUploaded = e.target.files[0]
+    navigator.notification.alert(
+            'You have successfully uploaded an image!',
+            () => {},
+            'Success',
+            'OK'
+        );
 })
 
 function deleteEvent(){

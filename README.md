@@ -1,12 +1,10 @@
-# XU EventHub - Last Updated: 11/24/2026 
+# XU EventHub - Last Updated: 11/25/2026 
 
-## Implemented Features (Release Candidate 2):
-- Added Searchable Created Events
-- Minor Tweaks to Wording
-- Refactoring
+## Implemented Features (Release Candidate 3):
+- Minor Tweaks and Improvements
 
 ### Bug Fixes
-- Fixed a bug regarding secondary events not showing up properly in Search Results
+- Fixed a bug regarding cordova.js not being found by pages in the subfolder.
 
 ## Testing Results
 - Logins go through to homepage. ☑️
@@ -21,11 +19,10 @@
 - Inserting and Updating the Database while Unauthenticated will return an error ☑️
 
 ## List of Identified Issues and Bugs
-- Despite Banners having Images, they will always show up as no file name in Admin Event Creation and Admin Event Management
 - No matter what, 404 error if events don't have banners.
 
 ## Progress Report:
-- 95% Completion. This is a release candidate version of the application. Any bugs found in the following week can be patched.
+- 99.9% Completion. This is a release candidate version of the application. Any bugs found in the following week can be patched.
 
 ## Screenshots:
 #### Homepage
