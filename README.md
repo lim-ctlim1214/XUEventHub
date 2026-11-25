@@ -1,10 +1,10 @@
 # XU EventHub - Last Updated: 11/25/2026 
 
-## Implemented Features (Release Candidate 3):
-- Minor Tweaks and Improvements
+## Implemented Features (1.0.1):
+- Changed Created Events Search to open event management rather than event description.
 
 ### Bug Fixes
-- Fixed a bug regarding cordova.js not being found by pages in the subfolder.
+- Changed Created Events Search to open event management rather than event description.
 
 ## Testing Results
 - Logins go through to homepage. ☑️
@@ -22,7 +22,7 @@
 - No matter what, 404 error if events don't have banners.
 
 ## Progress Report:
-- 99.9% Completion. This is a release candidate version of the application. Any bugs found in the following week can be patched.
+- 100% Completion. The application is ready for presentation.
 
 ## Screenshots:
 #### Homepage
