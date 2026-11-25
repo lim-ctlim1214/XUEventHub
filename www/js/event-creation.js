@@ -89,6 +89,12 @@ let bannerUploaded;
 document.getElementById('img-selector').addEventListener('change', async (e) => {
     if (!e.target.files[0]) return;
     bannerUploaded = e.target.files[0]
+    navigator.notification.alert(
+        'You have successfully uploaded an image!',
+        () => {},
+        'Success',
+        'OK'
+    );
 })
 
 function showError(message) {
