@@ -1,14 +1,10 @@
-# XU EventHub - Last Updated: 11/21/2026 
+# XU EventHub - Last Updated: 11/25/2026 
 
-## Implemented Features (Release Candidate 1):
-- Added Bookmarking from Event Description
-- Input Validation to Event Management and Creation
-- Support for Cordova Plugins
+## Implemented Features (Release Candidate 3):
+- Minor Tweaks and Improvements
 
 ### Bug Fixes
-- Added Feedback to Event Creation and Event Management
-- Fixed a bug regarding Primary Event Creation
-- Fixed a bug regarding categories
+- Fixed a bug regarding cordova.js not being found by pages in the subfolder.
 
 ## Testing Results
 - Logins go through to homepage. ☑️
@@ -23,11 +19,10 @@
 - Inserting and Updating the Database while Unauthenticated will return an error ☑️
 
 ## List of Identified Issues and Bugs
-- Despite Banners having Images, they will always show up as no file name in Admin Event Creation and Admin Event Management
 - No matter what, 404 error if events don't have banners.
 
 ## Progress Report:
-- 95% Completion. This is a release candidate version of the application. Any bugs found in the following week can be patched.
+- 99.9% Completion. This is a release candidate version of the application. Any bugs found in the following week can be patched.
 
 ## Screenshots:
 #### Homepage

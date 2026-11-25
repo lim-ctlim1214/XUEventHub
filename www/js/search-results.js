@@ -35,11 +35,11 @@ async function addSecondEvent(data){
 }
 
 async function renderResults(data){
+    secondaryEvents.innerHTML = ``
     searchResults.innerHTML = '';
     data.forEach(element => {
 
         if (element.parentEventID !== null) {
-            secondaryEvents.innerHTML = ``
             addSecondEvent(element)
             return;
         }

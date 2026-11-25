@@ -141,20 +141,6 @@ async function grabAllEvents() {
     return data;
 }
 
-async function grabEvent(eventName) {
-    const { data, error } = await db
-        .from('Events')
-        .select('*')
-        .eq('name', eventName)
-        .single();
-
-    if (error) {
-        console.error(error);
-        return null;
-    }
-    return data;
-}
-
 let bookmarks = [];
 
 function setupBookmarks(){
@@ -307,6 +293,22 @@ function formatTimeRange(start, end) {
         return "All Day";
     }
     return `${s} - ${e}`;
+}
+
+async function searchEventsFromUser(query, user_id){
+    const {data, error} = await db
+    .from('Events')
+        .select('*')
+        .ilike('name', `%${query}%`)
+        .eq('event_owner', user_id)
+        .order('start_date', {ascending: true})
+
+    if (error) {
+        console.error(error);
+        return [];
+    }
+
+    return data;
 }
 
 async function getAllEventsFromUser(user_id){
